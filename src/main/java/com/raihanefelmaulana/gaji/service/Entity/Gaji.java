@@ -22,14 +22,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Gaji {
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long gajiId;
-    private Long karyawanId;
-    private Long golonganId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long gajiId;
+    private long karyawanId;
+    private long golonganId;
     private String gajiTanggal;
-    private Long jumlahanak;
-    private Long tunjanganAnak;
-    private Long tunjanganSuamiIstri;
-    private double totalGaji;
+    private long tunjanganAnak;
+    private long tunjanganSuamiIstri;
+    private long totalGaji;
 }

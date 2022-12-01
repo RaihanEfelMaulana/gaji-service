@@ -18,6 +18,6 @@ import lombok.NoArgsConstructor;
 public class Golongan {
     private Long golonganId;
     private String golonganName;
-    private Long gajiPokok;
+    private Long golonganGajiPokok;
     
 }

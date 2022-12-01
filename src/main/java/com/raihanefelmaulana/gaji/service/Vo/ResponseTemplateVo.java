@@ -19,5 +19,5 @@ import lombok.NoArgsConstructor;
 public class ResponseTemplateVo {
     private Gaji gaji;
     private Karyawan karyawan;
-    private Golongan golongan;
+    private Golongan golongan; 
 }

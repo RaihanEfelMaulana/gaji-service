@@ -18,5 +18,5 @@ import lombok.NoArgsConstructor;
 public class Karyawan {
     private Long karyawanId;
     private String karyawanName;
-    private String karyawanAddress;
+    private String karyawanAlamat;
 }

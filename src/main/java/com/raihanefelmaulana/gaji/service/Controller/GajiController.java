@@ -28,12 +28,12 @@ public class GajiController {
     private GajiService gajiService;
     
     @PostMapping("/")
-    public Gaji savegaji(@RequestBody Gaji gaji) throws ParseException{
+    public Gaji saveGaji(@RequestBody Gaji gaji){
         return gajiService.saveGaji(gaji);
     }
-    
-    @GetMapping("{id}")
-    public ResponseTemplateVo getGaji(@PathVariable("id") Long gajiId){
-     return gajiService.getGaji(gajiId);
+ 
+    @GetMapping("/{id}")
+    public ResponseTemplateVo findGajiById(@PathVariable("id") Long gajiId){
+        return gajiService.getGaji(gajiId);
     }
 }

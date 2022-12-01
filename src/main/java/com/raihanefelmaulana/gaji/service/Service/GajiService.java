@@ -24,7 +24,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class GajiService {
     @Autowired
-    private SimpleDateFormat simpleDateFormat;
+    private SimpleDateFormat formatTanggal;
     
     @Autowired
     private GajiRepository gajiRepository;
@@ -33,21 +33,21 @@ public class GajiService {
     private RestTemplate restTemplate;
     
     public Gaji saveGaji(Gaji gaji){
-        String tglSekarang = simpleDateFormat.format(new Date());   
-        Golongan golongan = restTemplate.getForObject("http://localhost:8081/golongan/" 
+        String tglSekarang = formatTanggal.format(new Date());   
+        Golongan golongan = restTemplate.getForObject("http://localhost:8016/golongan/" 
                 + gaji.getGolonganId(), Golongan.class);
-        long totalGaji = golongan.getGajiPokok() + gaji.getTunjanganAnak() + gaji.getTunjanganSuamiIstri();
+        long totalGaji = golongan.getGolonganGajiPokok() + gaji.getTunjanganAnak() + gaji.getTunjanganSuamiIstri();
         gaji.setTotalGaji(totalGaji);
         gaji.setGajiTanggal(tglSekarang);
         return gajiRepository.save(gaji);
     }
     
-     public ResponseTemplateVo getGaji(Long gajiId){
+    public ResponseTemplateVo getGaji(Long gajiId){
         ResponseTemplateVo vo = new ResponseTemplateVo();
         Gaji gaji = gajiRepository.findByGajiId(gajiId);
-        Karyawan karyawan = restTemplate.getForObject("http://localhost:8080/karyawan/" 
+        Karyawan karyawan = restTemplate.getForObject("http://localhost:8015/karyawan/" 
               + gaji.getKaryawanId(), Karyawan.class);
-        Golongan golongan = restTemplate.getForObject("http://localhost:8081/golongan/" 
+        Golongan golongan = restTemplate.getForObject("http://localhost:8016/golongan/" 
                 + gaji.getGolonganId(), Golongan.class);
         vo.setGaji(gaji);
         vo.setKaryawan(karyawan);
